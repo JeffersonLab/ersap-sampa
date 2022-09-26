@@ -1,0 +1,11 @@
+---
+name: SampaSourceEngine
+engine: org.jlab.epsci.stream.engine.SampaSourceEngine
+type: java
+
+author: Carl Timmer
+email: timmer@jlab.org
+
+version: 0.1
+description:
+  Gets data from 2 SAMPA links per FEC, aggregates, decodes and returns an event on each request.

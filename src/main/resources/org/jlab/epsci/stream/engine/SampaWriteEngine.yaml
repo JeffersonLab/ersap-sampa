@@ -1,0 +1,11 @@
+---
+name: SampaWriteEngine
+engine: org.jlab.epsci.stream.engine.SampaWriteEngine
+type: java
+
+author: Vardan Gyurjyan
+email: gurjyan@jlab.org
+
+version: 0.1
+description:
+  Dummy write engine.
