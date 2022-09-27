@@ -751,7 +751,7 @@ public class DasDecoder implements SDecoder {
 //if ((id == 1) && (channel == 0) && (streamId == 2) && numSamples < 10) {
 //                System.out.print(Integer.toHexString(adc_value) + "  " );
 //}
-                System.out.println("stream = "+ streamId + ", channel = "+ channel+" "+ Integer.toHexString(adc_value));
+//                System.out.println("stream = "+ streamId + ", channel = "+ channel+" "+ Integer.toHexString(adc_value));
 
 
                 // Read this into a SRingRawEvent, not into local memory ...
@@ -764,7 +764,7 @@ public class DasDecoder implements SDecoder {
                 }
             }
         }
-        System.out.println( );
+        System.out.println( "------------------------" );
 
 //if (id == 1 && streamId == 2) System.out.println();
 
