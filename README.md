@@ -2,7 +2,7 @@
 ### Java Binding
 #### Build notes
 
-The project requires JDK 14 or higher.
+The project requires JDK 11 or higher.
 
 #### Ubuntu
 
@@ -31,7 +31,7 @@ Install Oracle Java using [Homebrew](https://brew.sh/):
 
 ### Installation
 
-To build ERSAP use the provided [Gradle](https://gradle.org/) wrapper.
+To build ersap-sampa use the provided [Gradle](https://gradle.org/) wrapper.
 It will download the required Gradle version and all the ERSAP dependencies.
 
     $ ./gradlew clean
