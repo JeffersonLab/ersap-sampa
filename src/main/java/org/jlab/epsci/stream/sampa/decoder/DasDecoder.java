@@ -712,8 +712,9 @@ public class DasDecoder implements SDecoder {
 if (streamId == 2)  System.out.println("get stream " + streamId + " at " + (offset + channel * 2 + 1));
                 short adc_value = (short)(((data.get(offset + channel * 2 + 1)) << 5) | (data.get(offset + channel * 2)));
 //if ((id == 1) && (channel == 0) && (streamId == 2) && numSamples < 10) {
+if ((channel == 0) && (streamId == 2) && numSamples < 10) {
     System.out.print(Integer.toHexString(adc_value) + "  " );
-//}
+}
                 // Read this into a SRingRawEvent, not into local memory ...
                 try {
                     // The buffers in the raw event object are all set to little endian
