@@ -764,9 +764,8 @@ if ((id == 1) && (channel == 0) && (streamId == 2) && numSamples < 20) {
                 }
             }
         }
-        System.out.println();
 
-//if (id == 1 && streamId == 2) System.out.println();
+if (id == 1 && streamId == 2) System.out.println();
 
         // Now if we've read ALL the data, just clear the buffer - which is most efficient
         if (readAll) {
