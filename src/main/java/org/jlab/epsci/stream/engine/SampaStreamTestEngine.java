@@ -55,16 +55,15 @@ public class SampaStreamTestEngine implements Engine {
 
     @Override
     public EngineData execute(EngineData input) {
-        System.out.println("DDD JAVA service"+input.getMimeType());
+//        System.out.println("DDD JAVA service"+input.getMimeType());
         ByteBuffer data = (ByteBuffer) input.getData();
-        System.out.println("position="+data.position()+
-                " limit="+data.limit() +
-                " order="+data.order() +
-                " direct="+data.isDirect()+
-                " readonly="+data.isReadOnly());
-//        data.flip();
-//        for (int i=0; i>=30; i++)
-//        System.out.print(data.getInt());
+//        System.out.println("position="+data.position()+
+//                " limit="+data.limit() +
+//                " order="+data.order() +
+//                " direct="+data.isDirect()+
+//                " readonly="+data.isReadOnly());
+        for (int i=0; i>=30; i++)
+        System.out.print(data.get()+" ");
 //        System.out.println("\n");
         return input;
     }
