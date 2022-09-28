@@ -47,7 +47,7 @@ public class SampaWriteEngine extends AbstractEventWriterService<FileOutputStrea
         try {
             ByteBuffer b = (ByteBuffer)event;
             writer.write(b.array());
-            writer.flush();
+//            writer.flush();
         } catch (IOException e) {
             e.printStackTrace();
         }
