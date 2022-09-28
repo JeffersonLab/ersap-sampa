@@ -65,7 +65,17 @@ public class SampaStreamTestEngine implements Engine {
         System.out.println("data = "+Integer.toHexString(data.getInt())+
                 " "+Integer.toHexString(data.getInt())+
                 " "+Integer.toHexString(data.getInt())+
-                " "+Integer.toHexString(data.getInt()));
+                " "+Integer.toHexString(data.getInt())+
+                " "+Integer.toHexString(data.getInt())+
+                " "+Integer.toHexString(data.getInt())+
+                " "+Integer.toHexString(data.getInt())+
+                " "+Integer.toHexString(data.getInt())+
+                " "+Integer.toHexString(data.getInt())+
+                " "+Integer.toHexString(data.getInt())+
+                " "+Integer.toHexString(data.getInt())+
+                " "+Integer.toHexString(data.getInt())+
+                " "+Integer.toHexString(data.getInt())
+        );
         return input;
     }
 
