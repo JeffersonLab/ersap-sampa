@@ -62,9 +62,7 @@ public class SampaStreamTestEngine implements Engine {
 //                " order="+data.order() +
 //                " direct="+data.isDirect()+
 //                " readonly="+data.isReadOnly());
-        for (int i=0; i>=30; i++)
-        System.out.print(data.get()+" ");
-//        System.out.println("\n");
+        System.out.println("int = "+data.getInt());
         return input;
     }
 
