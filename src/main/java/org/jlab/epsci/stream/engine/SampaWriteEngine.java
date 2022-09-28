@@ -7,6 +7,7 @@ import org.json.JSONObject;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.ByteBuffer;
 import java.nio.file.Path;
 
 /**
@@ -24,6 +25,7 @@ public class SampaWriteEngine extends AbstractEventWriterService<FileWriter> {
     @Override
     protected FileWriter createWriter(Path file, JSONObject opts)
             throws EventWriterException {
+        System.out.println("DDD "+file);
         try {
             return new FileWriter(file.toString());
         } catch (IOException e) {
@@ -42,6 +44,11 @@ public class SampaWriteEngine extends AbstractEventWriterService<FileWriter> {
 
     @Override
     protected void writeEvent(Object event) throws EventWriterException {
+        try {
+            writer.write((char[])event);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
