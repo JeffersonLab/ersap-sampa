@@ -57,6 +57,7 @@ public class SampaStreamTestEngine implements Engine {
     public EngineData execute(EngineData input) {
 //        System.out.println("DDD JAVA service"+input.getMimeType());
         ByteBuffer data = (ByteBuffer) input.getData();
+        System.out.println(data.limit());
         return input;
     }
 
