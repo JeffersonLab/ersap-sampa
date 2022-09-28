@@ -25,7 +25,7 @@ public class SampaWriteEngine extends AbstractEventWriterService<FileWriter> {
     @Override
     protected FileWriter createWriter(Path file, JSONObject opts)
             throws EventWriterException {
-        System.out.println("DDD "+file);
+        System.out.println("DDD ===================================== "+file);
         try {
             return new FileWriter(file.toString());
         } catch (IOException e) {
