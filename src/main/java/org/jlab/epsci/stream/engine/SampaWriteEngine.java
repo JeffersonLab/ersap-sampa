@@ -52,7 +52,7 @@ public class SampaWriteEngine extends AbstractEventWriterService<FileOutputStrea
             evt_count++;
             ByteBuffer b = (ByteBuffer)event;
             writer.write(b.array());
-            if (evt_count >= 1000 ){
+            if (evt_count >= 2000 ){
                 writer.flush();
                 writer.close();
                 f_count++;
