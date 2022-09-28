@@ -31,7 +31,7 @@ public class SampaWriteEngine extends AbstractEventWriterService<FileOutputStrea
         try {
             evt_count = 0;
             f_name = file.toString();
-            return new FileOutputStream(f_name+f_count);
+            return new FileOutputStream(f_name+"_"+f_count);
         } catch (IOException e) {
             throw new EventWriterException(e);
         }
@@ -52,11 +52,11 @@ public class SampaWriteEngine extends AbstractEventWriterService<FileOutputStrea
             evt_count++;
             ByteBuffer b = (ByteBuffer)event;
             writer.write(b.array());
-            if (evt_count >= 2000 ){
+            if (evt_count >= 1000 ){
                 writer.flush();
                 writer.close();
                 f_count++;
-                writer = new FileOutputStream(f_name+f_count);
+                writer = new FileOutputStream(f_name+"_"+f_count);
                 evt_count = 0;
             }
         } catch (IOException e) {
