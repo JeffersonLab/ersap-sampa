@@ -5,8 +5,10 @@ import org.jlab.epsci.ersap.std.services.AbstractEventWriterService;
 import org.jlab.epsci.ersap.std.services.EventWriterException;
 import org.json.JSONObject;
 
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.ByteBuffer;
 import java.nio.file.Path;
 
 /**
@@ -20,12 +22,12 @@ import java.nio.file.Path;
  * @author gurjyan on 9/26/22
  * @project ersap-sampa
  */
-public class SampaWriteEngine extends AbstractEventWriterService<FileWriter> {
+public class SampaWriteEngine extends AbstractEventWriterService<FileOutputStream> {
     @Override
-    protected FileWriter createWriter(Path file, JSONObject opts)
+    protected FileOutputStream createWriter(Path file, JSONObject opts)
             throws EventWriterException {
         try {
-            return new FileWriter(file.toString());
+            return new FileOutputStream(file.toString());
         } catch (IOException e) {
             throw new EventWriterException(e);
         }
@@ -43,7 +45,8 @@ public class SampaWriteEngine extends AbstractEventWriterService<FileWriter> {
     @Override
     protected void writeEvent(Object event) throws EventWriterException {
         try {
-            writer.write((char[])event);
+            ByteBuffer b = (ByteBuffer)event;
+            writer.write(b.array());
         } catch (IOException e) {
             e.printStackTrace();
         }
