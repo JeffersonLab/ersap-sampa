@@ -40,7 +40,11 @@ public class SampaStreamTestEngine implements Engine {
             String source = (String) input.getData();
             JSONObject data = new JSONObject(source);
             if (data.has(VERBOSE)) {
-               verbose = true;
+                if (data.getString(VERBOSE).equalsIgnoreCase("true")) {
+                    verbose = true;
+                } else {
+                    verbose = false;
+                }
             }
         }
         return null;

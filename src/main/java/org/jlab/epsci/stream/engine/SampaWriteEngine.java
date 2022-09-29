@@ -32,7 +32,11 @@ public class SampaWriteEngine extends AbstractEventWriterService<FileOutputStrea
     protected FileOutputStream createWriter(Path file, JSONObject opts)
             throws EventWriterException {
         if (opts.has(FILE_OUTPUT)) {
-            file_output = true;
+            if(opts.getString(FILE_OUTPUT).equalsIgnoreCase("true")) {
+                file_output = true;
+            } else {
+                file_output = false;
+            }
         }
 
         try {
