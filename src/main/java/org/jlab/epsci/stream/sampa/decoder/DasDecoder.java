@@ -748,7 +748,7 @@ public class DasDecoder implements SDecoder {
                 // This will fit into a short w/out having to worry about sign extension.
 //if (streamId == 2)  System.out.println("get stream " + streamId + " at " + (offset + channel * 2 + 1));
                 short adc_value = (short) (((data.get(offset + channel * 2 + 1)) << 5) | (data.get(offset + channel * 2)));
-if ((id == 1) && (channel == 1) && (streamId == 2) && numSamples < 30) { //vg
+if ((id == 1) && (channel == 4) && (streamId == 1) && numSamples < 30) { //vg
 //                System.out.print(Integer.toHexString(adc_value) + "  " );
                 System.out.print(adc_value + "  " ); //vg
 } //vg
