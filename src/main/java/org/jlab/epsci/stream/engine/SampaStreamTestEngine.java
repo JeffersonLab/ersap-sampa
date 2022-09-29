@@ -15,6 +15,7 @@ import org.jlab.epsci.ersap.base.ErsapUtil;
 import org.jlab.epsci.ersap.engine.Engine;
 import org.jlab.epsci.ersap.engine.EngineData;
 import org.jlab.epsci.ersap.engine.EngineDataType;
+import org.jlab.epsci.stream.sampa.SRingRawEvent;
 import org.json.JSONObject;
 
 import java.nio.ByteBuffer;
@@ -56,26 +57,12 @@ public class SampaStreamTestEngine implements Engine {
     @Override
     public EngineData execute(EngineData input) {
 //        System.out.println("DDD JAVA service"+input.getMimeType());
-        ByteBuffer data = (ByteBuffer) input.getData();
-//        System.out.println("position="+data.position()+
-//                " limit="+data.limit() +
-//                " order="+data.order() +
-//                " direct="+data.isDirect()+
-//                " readonly="+data.isReadOnly());
-        System.out.println("data = "+Integer.toHexString(data.getInt())+
-                " "+Integer.toHexString(data.getInt())+
-                " "+Integer.toHexString(data.getInt())+
-                " "+Integer.toHexString(data.getInt())+
-                " "+Integer.toHexString(data.getInt())+
-                " "+Integer.toHexString(data.getInt())+
-                " "+Integer.toHexString(data.getInt())+
-                " "+Integer.toHexString(data.getInt())+
-                " "+Integer.toHexString(data.getInt())+
-                " "+Integer.toHexString(data.getInt())+
-                " "+Integer.toHexString(data.getInt())+
-                " "+Integer.toHexString(data.getInt())+
-                " "+Integer.toHexString(data.getInt())
-        );
+
+        SRingRawEvent data = (SRingRawEvent) input.getData();
+        data.printData(System.out, 0, false);
+        data.calculateStats();
+        data.printStats(System.out, false);
+
         return input;
     }
 
