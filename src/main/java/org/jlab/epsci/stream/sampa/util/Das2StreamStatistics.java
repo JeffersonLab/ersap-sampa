@@ -22,8 +22,8 @@ public class Das2StreamStatistics {
     private double[] sdv;
 
     public Das2StreamStatistics() {
-        mean = new double[160];
-        sdv = new double[160];
+        mean = new double[80];
+        sdv = new double[80];
     }
 
     public void calculateStats(ByteBuffer[] data) {
@@ -36,7 +36,7 @@ public class Das2StreamStatistics {
         // How much data do we have?
         int sampleLimit = data[0].limit()/2;
 
-        for (int channel = 0; channel < 160; channel++) {
+        for (int channel = 0; channel < 80; channel++) {
             m = 0;
             M2 = 0;
             variance = 0;
@@ -69,21 +69,21 @@ public class Das2StreamStatistics {
 
         if (json) {
             writer.write("\"mean\": [");
-            for (int channel = 0; channel < 160; channel++) {
+            for (int channel = 0; channel < 80; channel++) {
                 writer.printf("%8.4f", mean[channel]);
-                writer.write((channel == 159 ? "]" : ", "));
+                writer.write((channel == 79 ? "]" : ", "));
             }
 
             writer.write(",\n");
             writer.write("\"stdev\": [");
 
-            for (int channel = 0; channel < 160; channel++) {
+            for (int channel = 0; channel < 80; channel++) {
                 writer.printf("%6.4f", sdv[channel]);
-                writer.write((channel == 159 ? "]" : ", "));
+                writer.write((channel == 79 ? "]" : ", "));
             }
         }
         else {
-            for (int channel = 0; channel < 160; channel++) {
+            for (int channel = 0; channel < 80; channel++) {
                 writer.write("[ CHA ");
                 writer.printf("%2d] : ", channel);
                 writer.printf("%8.4f   ", mean[channel]);
