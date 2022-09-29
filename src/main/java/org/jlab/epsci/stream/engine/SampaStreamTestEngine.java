@@ -26,12 +26,10 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class SampaStreamTestEngine implements Engine {
-    private static final String PRINT_INTERVAL = "print-interval";
-    private static final String SLOT = "slot";
+    private static final String VERBOSE = "verbose";
+    private boolean verbose = false;
     private Das2StreamStatistics dasStat = new Das2StreamStatistics();
 
-    private boolean print;
-    private int slotToPrint;
 
 
     @Override
@@ -41,19 +39,8 @@ public class SampaStreamTestEngine implements Engine {
         if (input.getMimeType().equalsIgnoreCase(EngineDataType.JSON.mimeType())) {
             String source = (String) input.getData();
             JSONObject data = new JSONObject(source);
-            if (data.has(PRINT_INTERVAL)) {
-                int pi = data.getInt(PRINT_INTERVAL);
-                // Timer for measuring and printing statistics.
-                Timer timer = new Timer();
-                timer.schedule(new TimerTask() {
-                    @Override
-                    public void run() {
-                        print = true;
-                    }
-                }, 0, pi * 1000);
-                if (data.has(SLOT)) {
-                    slotToPrint = data.getInt(SLOT);
-                }
+            if (data.has(VERBOSE)) {
+               verbose = true;
             }
         }
         return null;
@@ -70,9 +57,10 @@ public class SampaStreamTestEngine implements Engine {
         } catch (ErsapException e) {
             e.printStackTrace();
         }
-        dasStat.calculateStats(data);
-        dasStat.printStats(System.out, false);
-
+        if(verbose) {
+            dasStat.calculateStats(data);
+            dasStat.printStats(System.out, false);
+        }
         return input;
     }
 

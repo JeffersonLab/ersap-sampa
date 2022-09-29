@@ -53,7 +53,7 @@ public class Das2StreamStatistics {
 
             mean[channel] = m;
             sdv[channel]  = Math.sqrt(variance);
-        };
+        }
     }
 
     public void printStats(OutputStream out, boolean json) {

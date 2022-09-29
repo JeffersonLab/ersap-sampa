@@ -25,9 +25,16 @@ public class SampaWriteEngine extends AbstractEventWriterService<FileOutputStrea
     private int evt_count;
     private int f_count;
     private String f_name;
+    private static String FILE_OUTPUT = "file_output";
+    private boolean file_output = false;
+
     @Override
     protected FileOutputStream createWriter(Path file, JSONObject opts)
             throws EventWriterException {
+        if (opts.has(FILE_OUTPUT)) {
+            file_output = true;
+        }
+
         try {
             evt_count = 0;
             f_name = file.toString();
@@ -48,20 +55,22 @@ public class SampaWriteEngine extends AbstractEventWriterService<FileOutputStrea
 
     @Override
     protected void writeEvent(Object event) throws EventWriterException {
-//        try {
-//            evt_count++;
-//            ByteBuffer b = (ByteBuffer)event;
-//            writer.write(b.array());
-//            if (evt_count >= 1000 ){
-//                writer.flush();
-//                writer.close();
-//                f_count++;
-//                writer = new FileOutputStream(f_name+"_"+f_count);
-//                evt_count = 0;
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+        if(file_output) {
+            try {
+                evt_count++;
+                ByteBuffer b = (ByteBuffer) event;
+                writer.write(b.array());
+                if (evt_count >= 1000) {
+                    writer.flush();
+                    writer.close();
+                    f_count++;
+                    writer = new FileOutputStream(f_name + "_" + f_count);
+                    evt_count = 0;
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override
