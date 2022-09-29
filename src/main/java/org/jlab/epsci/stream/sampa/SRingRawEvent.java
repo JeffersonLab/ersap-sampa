@@ -602,7 +602,7 @@ public class SRingRawEvent {
             variance = 0;
 
             for (int sample = 0; sample < sampleLimit; sample++) {
-                dataPt = localData[channel].getShort(sample);
+                dataPt = localData[channel].getShort(2*sample);
                 delta = dataPt - m;
                 m  += delta / (sample + 1);
                 M2 += delta * (dataPt - m);
