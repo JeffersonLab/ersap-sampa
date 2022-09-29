@@ -1,0 +1,34 @@
+---
+io-services:
+  reader:
+    class: org.jlab.epsci.stream.engine.SampaSourceEngine
+    name: SMPSource
+  writer:
+    class: org.jlab.epsci.stream.engine.SampaWriteEngine
+    name: SMPWriter
+services:
+  - class: org.jlab.epsci.stream.engine.SampaStreamTestEngine
+    name: SMPStreamTest
+  - class: org.jlab.epsci.stream.engine.SampaHistogramEngine
+    name: SMPHistogram
+configuration:
+  io-services:
+    reader:
+      port1: 6000
+      port2: 6001
+    writer:
+      file_output: false
+  services:
+    SMPStreamTest:
+      verbose: true
+    SMPHistogram:
+      frame_title: "ERSAP"
+      frame_width: 1400
+      frame_height: 1200
+      #> hist_titles is a string containing the list of integers=channels separated by ,
+      hist_titles: "1, 3, 7, 17"
+      hist_bins: 100
+      hist_min: 0
+      hist_max: 500
+mime-types:
+  - binary/data-sampa
