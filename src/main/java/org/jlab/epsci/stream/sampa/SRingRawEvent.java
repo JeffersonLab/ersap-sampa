@@ -423,6 +423,7 @@ public class SRingRawEvent {
      * @param hex if true, output values are in hexadecimal, else in decimal.
      */
     public void printData(OutputStream out, int streamId, boolean hex) {
+        System.out.println(sType.isDAS());
         if (sType.isDAS()) {
             printDataDAS(out, hex);
             //printDataDASChannel(out, hex, 0, 10);
