@@ -42,7 +42,7 @@ public class Das2StreamStatistics {
             variance = 0;
 
             for (int sample = 0; sample < sampleLimit; sample++) {
-                dataPt = data[channel].getShort(sample);
+                dataPt = data[channel].getShort(2*sample);
                 System.out.printf(dataPt+" ");
                 delta = dataPt - m;
                 m  += delta / (sample + 1);
