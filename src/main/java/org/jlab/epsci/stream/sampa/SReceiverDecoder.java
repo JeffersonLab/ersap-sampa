@@ -220,9 +220,9 @@ public class SReceiverDecoder extends Thread {
                 }
 
                 // Print out
-//                rawEvent.printData(System.out, streamId, true);
-//                rawEvent.calculateStats();
-//                rawEvent.printStats(System.out, false);
+                rawEvent.printData(System.out, streamId, false);
+                rawEvent.calculateStats();
+                rawEvent.printStats(System.out, false);
 
                 // Make the buffer available for consumers
                 publish();
