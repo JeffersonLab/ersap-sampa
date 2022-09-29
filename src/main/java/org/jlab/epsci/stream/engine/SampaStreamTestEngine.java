@@ -16,7 +16,6 @@ import org.jlab.epsci.ersap.base.error.ErsapException;
 import org.jlab.epsci.ersap.engine.Engine;
 import org.jlab.epsci.ersap.engine.EngineData;
 import org.jlab.epsci.ersap.engine.EngineDataType;
-import org.jlab.epsci.stream.sampa.SRingRawEvent;
 import org.jlab.epsci.stream.sampa.util.Das2StreamStatistics;
 import org.jlab.epsci.stream.sampa.util.DasDataType;
 import org.json.JSONObject;
