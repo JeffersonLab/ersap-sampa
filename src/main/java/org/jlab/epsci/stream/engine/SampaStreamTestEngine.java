@@ -12,10 +12,13 @@ package org.jlab.epsci.stream.engine;
  * @project ersap-sampa
  */
 import org.jlab.epsci.ersap.base.ErsapUtil;
+import org.jlab.epsci.ersap.base.error.ErsapException;
 import org.jlab.epsci.ersap.engine.Engine;
 import org.jlab.epsci.ersap.engine.EngineData;
 import org.jlab.epsci.ersap.engine.EngineDataType;
 import org.jlab.epsci.stream.sampa.SRingRawEvent;
+import org.jlab.epsci.stream.sampa.util.Das2StreamStatistics;
+import org.jlab.epsci.stream.sampa.util.DasDataType;
 import org.json.JSONObject;
 
 import java.nio.ByteBuffer;
@@ -26,8 +29,11 @@ import java.util.TimerTask;
 public class SampaStreamTestEngine implements Engine {
     private static final String PRINT_INTERVAL = "print-interval";
     private static final String SLOT = "slot";
+    private Das2StreamStatistics dasStat = new Das2StreamStatistics();
+
     private boolean print;
     private int slotToPrint;
+
 
     @Override
     public EngineData configure(EngineData input) {
@@ -58,10 +64,15 @@ public class SampaStreamTestEngine implements Engine {
     public EngineData execute(EngineData input) {
 //        System.out.println("DDD JAVA service"+input.getMimeType());
 
-        SRingRawEvent data = (SRingRawEvent) input.getData();
-        data.printData(System.out, 0, false);
-        data.calculateStats();
-        data.printStats(System.out, false);
+        ByteBuffer bb = (ByteBuffer)input.getData();
+        ByteBuffer[] data = null;
+        try {
+            data = DasDataType.deserialize(bb);
+        } catch (ErsapException e) {
+            e.printStackTrace();
+        }
+        dasStat.calculateStats(data);
+        dasStat.printStats(System.out, false);
 
         return input;
     }
