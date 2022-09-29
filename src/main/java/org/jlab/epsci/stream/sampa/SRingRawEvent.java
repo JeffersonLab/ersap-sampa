@@ -423,7 +423,6 @@ public class SRingRawEvent {
      * @param hex if true, output values are in hexadecimal, else in decimal.
      */
     public void printData(OutputStream out, int streamId, boolean hex) {
-        System.out.println(sType.isDAS());
         if (sType.isDAS()) {
             printDataDAS(out, hex);
             //printDataDASChannel(out, hex, 0, 10);
@@ -505,7 +504,7 @@ public class SRingRawEvent {
     private void printDataDAS(OutputStream out, boolean hex) {
         boolean autoFlush = true;
         PrintWriter writer = new PrintWriter(out, autoFlush, StandardCharsets.US_ASCII);
-
+        System.out.println("DDD "+ validChannels);
         for (int channel = 0; channel < validChannels; channel++) {
 
             writer.print("Channel #");
