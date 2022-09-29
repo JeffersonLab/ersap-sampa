@@ -504,8 +504,8 @@ public class SRingRawEvent {
     private void printDataDAS(OutputStream out, boolean hex) {
         boolean autoFlush = true;
         PrintWriter writer = new PrintWriter(out, autoFlush, StandardCharsets.US_ASCII);
-        System.out.println("DDD "+ validChannels);
-        for (int channel = 0; channel < validChannels; channel++) {
+//        for (int channel = 0; channel < validChannels; channel++) {
+        for (int channel = 0; channel < 80; channel++) {
 
             writer.print("Channel #");
             writer.println(channel);
