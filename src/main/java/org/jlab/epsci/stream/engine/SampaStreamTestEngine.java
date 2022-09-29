@@ -72,7 +72,7 @@ public class SampaStreamTestEngine implements Engine {
             e.printStackTrace();
         }
         dasStat.calculateStats(data);
-        dasStat.printStats(System.out, false);
+        dasStat.printStats(System.out, true);
 
         return input;
     }
