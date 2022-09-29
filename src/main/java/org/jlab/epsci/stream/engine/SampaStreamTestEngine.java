@@ -70,8 +70,8 @@ public class SampaStreamTestEngine implements Engine {
         } catch (ErsapException e) {
             e.printStackTrace();
         }
-//        dasStat.calculateStats(data);
-//        dasStat.printStats(System.out, false);
+        dasStat.calculateStats(data);
+        dasStat.printStats(System.out, false);
 
         return input;
     }
