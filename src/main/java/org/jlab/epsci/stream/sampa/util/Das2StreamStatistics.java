@@ -49,6 +49,7 @@ public class Das2StreamStatistics {
                 M2 += delta * (dataPt - m);
                 variance = M2 / (sample + 1);
             };
+            System.out.println("\n");
 
             mean[channel] = m;
             sdv[channel]  = Math.sqrt(variance);
