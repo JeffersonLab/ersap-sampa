@@ -33,7 +33,7 @@ public class SampaHistogramEngine implements Engine {
     private static String FRAME_HEIGHT = "frame_height";
     private int frameHeight;
     private static String HIST_TITLES = "hist_titles";
-    private ArrayList<Integer> histTitles;
+    private ArrayList<String> histTitles;
     private static String HIST_BINS = "hist_bins";
     private int histBins;
     private static String HIST_MIN = "hist_min";
@@ -66,7 +66,7 @@ public class SampaHistogramEngine implements Engine {
                 String ht = opts.getString(HIST_TITLES);
                 StringTokenizer st = new StringTokenizer(ht, ",");
                 while (st.hasMoreTokens()) {
-                    histTitles.add(Integer.parseInt(st.nextToken().trim()));
+                    histTitles.add(st.nextToken().trim());
                 }
             }
             if (opts.has(HIST_BINS)) {
@@ -96,12 +96,14 @@ public class SampaHistogramEngine implements Engine {
             data = DasDataType.deserialize(bb);
             int sampleLimit = data[0].limit()/2;
             for (int channel = 0; channel < 160; channel++) {
-                if(histTitles.contains(channel)) {
+                String title = String.valueOf(channel);
+                if(histTitles.contains(title)) {
+                    System.out.println("DDD *"+title+"*");
                     short[] _sData = new short[sampleLimit];
                     for (int sample = 0; sample < sampleLimit; sample++) {
                        _sData[sample] =  data[channel].getShort(2 * sample);
                     }
-                    histogram.update(String.valueOf(channel), _sData);                 ;
+                    histogram.update(title, _sData);                 ;
                 }
             }
 

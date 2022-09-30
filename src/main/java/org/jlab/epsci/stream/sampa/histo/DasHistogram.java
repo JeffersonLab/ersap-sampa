@@ -21,9 +21,9 @@ import java.util.Map;
  * @project ersap-sampa
  */
 public class DasHistogram {
-    private Map<Integer, H1F> histograms = new HashMap<>();
+    private Map<String, H1F> histograms = new HashMap<>();
 
-    public DasHistogram(String frameTitle, ArrayList<Integer> histTitles,
+    public DasHistogram(String frameTitle, ArrayList<String> histTitles,
                         int gridSize, int frameWidth, int frameHeight,
                         int histBins, double histMin, double histMax) {
 
@@ -40,13 +40,13 @@ public class DasHistogram {
         frame.getContentPane().add(panel);
 
         // Create number of canvas/histogram and add them to the panel
-        for (Integer s : histTitles) {
+        for (String s : histTitles) {
             TGDataCanvas c = new TGDataCanvas();
             c.setAxisFont(new Font("Avenir", Font.PLAIN, 6));
             panel.add(c);
             c.initTimer(600);
-            H1F hist = new H1F(Integer.toString(s), histBins, histMin, histMax);
-            hist.setTitleX(Integer.toString(s));
+            H1F hist = new H1F(s, histBins, histMin, histMax);
+            hist.setTitleX(s);
             histograms.put(s, hist);
             c.region().draw(hist);
         }
@@ -55,7 +55,6 @@ public class DasHistogram {
 
     public void update(String name, short[] data) {
         if (histograms.containsKey(name)) {
-            System.out.println("DDD "+name);
             for (short s : data) {
                 histograms.get(name).fill(s);
             }
