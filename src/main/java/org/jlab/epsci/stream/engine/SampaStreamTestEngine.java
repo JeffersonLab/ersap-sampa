@@ -22,8 +22,6 @@ import org.json.JSONObject;
 
 import java.nio.ByteBuffer;
 import java.util.Set;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class SampaStreamTestEngine implements Engine {
     private static final String VERBOSE = "verbose";

@@ -58,6 +58,9 @@ public class SampaHistogramEngine implements Engine {
             if (opts.has(FRAME_HEIGHT)) {
                 frameHeight = opts.getInt(FRAME_HEIGHT);
             }
+            if (opts.has(GRID_SIZE)) {
+                gridSize = opts.getInt(GRID_SIZE);
+            }
             if (opts.has(HIST_TITLES)) {
                 histTitles = new ArrayList<>();
                 String ht = opts.getString(HIST_TITLES);
