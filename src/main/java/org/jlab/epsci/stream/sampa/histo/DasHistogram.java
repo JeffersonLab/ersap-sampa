@@ -55,6 +55,7 @@ public class DasHistogram {
 
     public void update(String name, short[] data) {
         if (histograms.containsKey(name)) {
+            System.out.println("DDD "+name);
             for (short s : data) {
                 histograms.get(name).fill(s);
             }

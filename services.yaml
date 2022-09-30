@@ -20,7 +20,7 @@ configuration:
       file_output: "false"
   services:
     SMPStreamTest:
-      verbose: "true"
+      verbose: "false"
     SMPHistogram:
       frame_title: "ERSAP"
       frame_width: 1400
