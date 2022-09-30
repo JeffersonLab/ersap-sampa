@@ -31,6 +31,7 @@ Install Oracle Java using [Homebrew](https://brew.sh/):
 
 ### Installation
 git clone https://github.com/JeffersonLab/ersap-sampa.git
+
 To build ersap-sampa use the provided [Gradle](https://gradle.org/) wrapper.
 It will download the required Gradle version and all the ERSAP dependencies.
 
