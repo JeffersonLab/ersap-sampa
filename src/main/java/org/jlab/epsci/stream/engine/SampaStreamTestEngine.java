@@ -50,7 +50,6 @@ public class SampaStreamTestEngine implements Engine {
 
     @Override
     public EngineData execute(EngineData input) {
-//        System.out.println("DDD JAVA service"+input.getMimeType());
 
         ByteBuffer bb = (ByteBuffer)input.getData();
         ByteBuffer[] data = null;
@@ -61,7 +60,7 @@ public class SampaStreamTestEngine implements Engine {
         }
         if(verbose) {
             dasStat.calculateStats(data);
-            dasStat.printStats(System.out, false);
+            dasStat.printStats(System.out, true);
         }
         return input;
     }
