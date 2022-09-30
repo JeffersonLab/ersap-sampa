@@ -98,7 +98,6 @@ public class SampaHistogramEngine implements Engine {
             for (int channel = 0; channel < 160; channel++) {
                 String title = String.valueOf(channel);
                 if(histTitles.contains(title)) {
-                    System.out.println("DDD *"+title+"*");
                     short[] _sData = new short[sampleLimit];
                     for (int sample = 0; sample < sampleLimit; sample++) {
                        _sData[sample] =  data[channel].getShort(2 * sample);
